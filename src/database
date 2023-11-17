@@ -1,6 +1,7 @@
 <?php
 
-require_once 'agendamento.php';
+require_once 'cliente/agendamento.php';
+
 
 function findUserAction($conn, $id) {
     return findUserDb($conn, $id);
@@ -8,6 +9,21 @@ function findUserAction($conn, $id) {
 
 function readUserAction($conn) {
     return readUserDb($conn);
+}
+
+function readUserDb($conn) {
+    $users = [];
+
+    $query = "SELECT * FROM rodapresa_form";
+    $query_run = mysqli_query($conn, $query);
+
+    $result_check = mysqli_num_rows($query_run);
+
+    if($result_check > 0)
+        $users = mysqli_fetch_all($query_run, MYSQLI_ASSOC);
+
+    mysqli_close($conn);
+    return $users;
 }
 
 function createUserAction($conn, $nome, $cpf, $tel, $placa, $data_servico) {

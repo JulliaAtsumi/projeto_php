@@ -1,14 +1,11 @@
 <?php
 require_once 'cliente/agendamento.php';
-$agenda = readUserAction($conn);
-
-    
+require_once 'src/database';
+$users = readUserAction($conn);
 ?>
 
 <div class="container">
     <div class="row">
-        <a href=""><h1>Agenda</h1></a>
-        <a class="btn btn-success text-white" href="">New</a>
     </div>
     <div class="row flex-center">
         <?php if(isset($_GET['message'])) echo(printMessage($_GET['message'])); ?>
@@ -16,20 +13,19 @@ $agenda = readUserAction($conn);
 
     <table class="table-cliente">
         <tr>
-            <th>NAME</th>
+            <th>Nome</th>
             <th>CPF</th>
-            <th>TELEFONE</th>
-            <th>PLACA</th>
-            <th>DATA</th>
-
+            <th>Telefone</th>
+            <th>Placa</th>
+            <th>Data</th>
         </tr>
-        <?php foreach($cliente as $row): ?>
+        <?php foreach($users as $row): ?>
         <tr>
-            <td class="user-name"><?=htmlspecialchars($row['nome'])?></td>
-            <td class="user-email"><?=htmlspecialchars($row['cpf'])?></td>
-            <td class="user-phone"><?=htmlspecialchars($row['tel'])?></td>
-            <td class="user-phone"><?=htmlspecialchars($row['placa'])?></td>
-            <td class="user-phone"><?=htmlspecialchars($row['data_servico'])?></td>
+            <td class="cliente-name"></td>
+            <td class="cliente-email"></td>
+            <td class="cliente-phone"></td>
+            <td class="cliente-phone"></td>
+            <td class="cliente-phone"></td>
             <td>
                 <a class="btn btn-primary text-white" href="">Editar</a>
             </td>
@@ -37,6 +33,5 @@ $agenda = readUserAction($conn);
                 <a class="btn btn-danger text-white" href="">Remover</a>
             </td>
         </tr>
-        <?php endforeach; ?>
     </table>
 </div>

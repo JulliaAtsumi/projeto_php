@@ -1,16 +1,14 @@
 <?php
-require_once 'agenda.php';
+require_once '.\agenda.php';
 
 if (isset($_POST["id"], $_POST["nome"]) && isset($_POST["cpf"]) && isset($_POST["tel"]) && isset($_POST["placa"]) && isset($_POST["data"]))
-    updateUserAction($conn, $_POST["id"], $_POST["nome"], $_POST["cpf"], $_POST["tel"], $_POST["placa"], $_POST["data"]);
-
-$user = findUserAction($conn, $_GET['id']);
+    updateAgenda($conn, $_POST["id"], $_POST["nome"], $_POST["cpf"], $_POST["tel"], $_POST["placa"], $_POST["data"]);
 
 ?>  
 <div class="container">
     <div class="row">
-        <a href="index.php"><h1>ALTERAR AGENDA</h1></a>
-        <a class="btn btn-success text-white" href="index.php">Prev</a>
+    
+       
     </div>
     <div class="row flex-center">
         <div class="form-div">
@@ -25,10 +23,10 @@ $user = findUserAction($conn, $_GET['id']);
                 <label>Placa</label>
                 <input type="text" name="placa" value="<?=htmlspecialchars($cliente['placa'])?>" required/>
                 <label>Data</label>
-                <input type="date" name="data" value="<?=htmlspecialchars($cliente['data_servico'])?>" required/>
+                <input type="datetime-local" name="data" value="<?=htmlspecialchars($cliente['data_servico'])?>" required/>
 
 
-                <button class="btn btn-success text-white" type="submit">Save</button>
+                <button class="btn btn-primary" type="submit">Salvar</button>
             </form>
         </div>
     </div>
